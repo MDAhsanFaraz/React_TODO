@@ -4,6 +4,10 @@ import TodoContext from "../../context/TodoContext";
 function AddTodo() {
   const [todoText, setTodoText] = useState("");
   const { todos, setTodos } = useContext(TodoContext);
+  function addTodo(todoText) {
+    let nextId = todos.length + 1;
+    setTodos([...todos, { id: nextId, isFinished: false, text: todoText }]);
+  }
   return (
     <>
       <input
@@ -15,11 +19,7 @@ function AddTodo() {
       />
       <button
         onClick={() => {
-          let nextId = todos.length + 1;
-          setTodos([
-            ...todos,
-            { id: nextId, isFinished: false, text: todoText },
-          ]);
+          addTodo(todoText);
           setTodoText("");
         }}
       >
