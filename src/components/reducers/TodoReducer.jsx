@@ -1,6 +1,6 @@
 function TodoReducer(state, action) {
   if (action.type == "add_todo") {
-    let nextId = todos.length + 1;
+    let nextId = state.length + 1;
     return [
       ...state,
       { id: nextId, text: action.payload.todoText, isFinished: false },
